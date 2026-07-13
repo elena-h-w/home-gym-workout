@@ -4,7 +4,7 @@ import { DEFAULT_WEEK_PATTERN } from '../data/program'
 const DEFAULT_SETTINGS = {
   age: null,
   restTimerDefault: 75,
-  cardioMachine: 'treadmill',
+  preferredCardio: 'run',
   units: 'lb',
   weekPattern: DEFAULT_WEEK_PATTERN,
   setupComplete: false,

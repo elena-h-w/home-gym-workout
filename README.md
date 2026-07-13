@@ -67,7 +67,7 @@ On first launch, a setup screen collects:
 - **Age** — used to compute your heart-rate training zones
 - **Rest timer default** — how long to rest between strength sets
 - **Units** — lb or kg
-- **Preferred cardio machine** — treadmill or elliptical
+- **Preferred cardio** — Run, Ride, Swim, Row, or Elliptical
 - **Weekly schedule** — tap any day to cycle its focus (strength type / cardio type / rest); days are movable
 
 All user data (settings, sessions, strength log) is stored in `localStorage` only — nothing is baked into the codebase.

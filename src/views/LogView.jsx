@@ -109,8 +109,8 @@ function HistoryTab({ sessions, settings, updateSettings }) {
           <span className={styles.settingValue}>{settings.units}</span>
         </div>
         <div className={styles.settingRow}>
-          <span className={styles.settingLabel}>Preferred cardio machine</span>
-          <span className={styles.settingValue}>{settings.cardioMachine}</span>
+          <span className={styles.settingLabel}>Preferred cardio</span>
+          <span className={styles.settingValue}>{settings.preferredCardio}</span>
         </div>
         <div className={styles.settingRow}>
           <span className={styles.settingLabel}>Sessions logged</span>

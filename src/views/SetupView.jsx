@@ -8,6 +8,14 @@ const CARDIO_CYCLE = ['zone2', 'intervals', 'longFun']
 
 const TYPE_ICON = { strength: '💪', cardio: '🏃🏻‍♀️', rest: '🧘🏻‍♀️' }
 
+const CARDIO_OPTIONS = [
+  { id: 'run', label: 'Run' },
+  { id: 'ride', label: 'Ride' },
+  { id: 'swim', label: 'Swim' },
+  { id: 'row', label: 'Row' },
+  { id: 'elliptical', label: 'Elliptical' },
+]
+
 function cycleDay(day) {
   if (day.type === 'strength') {
     const idx = STRENGTH_CYCLE.indexOf(day.strengthDay)
@@ -30,7 +38,7 @@ export default function SetupView({ onComplete }) {
   const [age, setAge] = useState('')
   const [restTimerDefault, setRestTimerDefault] = useState(75)
   const [units, setUnits] = useState('lb')
-  const [cardioMachine, setCardioMachine] = useState('treadmill')
+  const [preferredCardio, setPreferredCardio] = useState('run')
   const [weekPattern, setWeekPattern] = useState(DEFAULT_WEEK_PATTERN.map(d => ({ ...d })))
 
   function handleCycle(i) {
@@ -47,7 +55,7 @@ export default function SetupView({ onComplete }) {
       alert('Enter your age so heart-rate zones can be calculated.')
       return
     }
-    onComplete({ age: ageNum, restTimerDefault: Number(restTimerDefault), units, cardioMachine, weekPattern })
+    onComplete({ age: ageNum, restTimerDefault: Number(restTimerDefault), units, preferredCardio, weekPattern })
   }
 
   return (
@@ -95,10 +103,17 @@ export default function SetupView({ onComplete }) {
         </div>
 
         <div className={styles.card}>
-          <h2 className={styles.cardTitle}>Preferred cardio machine</h2>
+          <h2 className={styles.cardTitle}>Preferred cardio</h2>
           <div className={styles.pillRow}>
-            <button className={`${styles.pill} ${cardioMachine === 'treadmill' ? styles.pillActive : ''}`} onClick={() => setCardioMachine('treadmill')}>Treadmill</button>
-            <button className={`${styles.pill} ${cardioMachine === 'elliptical' ? styles.pillActive : ''}`} onClick={() => setCardioMachine('elliptical')}>Elliptical</button>
+            {CARDIO_OPTIONS.map(opt => (
+              <button
+                key={opt.id}
+                className={`${styles.pill} ${preferredCardio === opt.id ? styles.pillActive : ''}`}
+                onClick={() => setPreferredCardio(opt.id)}
+              >
+                {opt.label}
+              </button>
+            ))}
           </div>
         </div>
 
