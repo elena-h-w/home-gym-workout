@@ -72,7 +72,7 @@ export default function SetupView({ onComplete }) {
             type="number"
             inputMode="numeric"
             className={styles.textInput}
-            placeholder="e.g. 34"
+            placeholder="e.g. 30"
             value={age}
             onChange={e => setAge(e.target.value)}
           />
