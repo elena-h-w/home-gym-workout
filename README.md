@@ -2,6 +2,8 @@
 
 A mobile-first home-gym strength + cardio tracker with progressive-overload logging and a categorized workout-video library.
 
+**[Live demo](https://lift-and-stride.vercel.app)**
+
 ---
 
 ## What it does
