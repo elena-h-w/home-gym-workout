@@ -1,0 +1,287 @@
+.page {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+.header {
+  padding: 20px 20px 8px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--text-primary);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px 4px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.tabActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* History */
+.settingsCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: 12px 16px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.settingRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.settingLabel {
+  color: var(--text-muted);
+}
+
+.settingValue {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.empty p {
+  margin-bottom: 4px;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 16px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.entryLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.entryDate {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.entryFocus {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.badgeStrength {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+.badgeCardio {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--cardio-light);
+  color: var(--cardio-dark);
+}
+
+/* Progress */
+.exercisePicker {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 16px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.exercisePicker::-webkit-scrollbar {
+  display: none;
+}
+
+.exerciseChip {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.exerciseChipActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.progressCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: 0 16px 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.progressTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.progressSub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.progressStats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--accent-dark);
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sparklineWrap {
+  margin-bottom: 16px;
+}
+
+.entryList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.progressEntry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.progressEntryDate {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.progressEntrySets {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+/* Reset */
+.resetSection {
+  padding: 8px 16px 24px;
+}
+
+.resetBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+.resetConfirm {
+  background: var(--danger-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.resetWarning {
+  font-size: 13px;
+  color: var(--danger);
+  margin-bottom: 12px;
+}
+
+.resetActions {
+  display: flex;
+  gap: 10px;
+}
+
+.resetCancel {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.resetConfirmBtn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--danger);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}

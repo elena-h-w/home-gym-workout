@@ -1,0 +1,121 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px;
+  gap: 10px;
+}
+
+.exitBtn {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 0;
+  margin-bottom: 12px;
+}
+
+.phaseBadge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.phase_warmup, .phase_cooldown {
+  background: var(--surface-warm);
+  color: var(--text-secondary);
+}
+
+.phase_hard {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.phase_easy {
+  background: var(--cardio-light);
+  color: var(--cardio-dark);
+}
+
+.phaseLabel {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.bigTime {
+  font-family: var(--font-display);
+  font-size: 68px;
+  color: var(--text-primary);
+  margin: 16px 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.overallBar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.overallFill {
+  height: 100%;
+  background: var(--cardio);
+  transition: width 1s linear;
+}
+
+.overallLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  width: 100%;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+  background: var(--cardio-light);
+  color: var(--cardio-dark);
+}
+
+.doneCheck {
+  animation: checkPop 0.4s ease-out;
+}
+
+.doneTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-top: 16px;
+}
+
+.exitBtn2 {
+  margin-top: 24px;
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
+  background: var(--cardio);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}

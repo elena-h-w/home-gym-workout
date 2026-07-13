@@ -1,0 +1,267 @@
+.page {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+.header {
+  padding: 20px 20px 8px;
+}
+
+.dateLabel {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--text-primary);
+}
+
+/* Week strip */
+.weekStrip {
+  display: flex;
+  padding: 12px 16px;
+  gap: 4px;
+}
+
+.dayCell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s;
+}
+
+.dayCell:active {
+  transform: scale(0.88);
+}
+
+.dayCellSelected {
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.dayCellToday .dayName {
+  color: var(--accent);
+}
+
+.dayName {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.dayType {
+  font-size: 16px;
+}
+
+.overrideNote {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 16px 4px;
+}
+
+.overrideNote button {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Session cards */
+.sessionCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: 8px 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sessionMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.badgeStrength {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+.badgeCardio {
+  background: var(--cardio-light);
+  color: var(--cardio-dark);
+}
+
+.sessionDetail {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sessionTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.sessionDesc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.exerciseList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.exerciseRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-warm);
+}
+
+.exerciseRow:last-child {
+  border-bottom: none;
+}
+
+.exNum {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.exName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.exSets {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.primaryBtn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.primaryBtn:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.strengthBtn {
+  background: var(--accent);
+}
+
+.cardioBtn {
+  background: var(--cardio);
+}
+
+/* Complete banner */
+.completeBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--success-light);
+  border-radius: var(--radius-md);
+  margin: 4px 16px 0;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--success);
+}
+
+/* Rest card */
+.restCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: 8px 16px;
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.restEmoji {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.restTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.restText {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.restVideoLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.restVideoLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface-warm);
+  border-radius: var(--radius-md);
+}
+
+.restVideoIcon {
+  font-size: 20px;
+}
+
+.restVideoTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}

@@ -1,0 +1,202 @@
+.page {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+.header {
+  padding: 20px 20px 8px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.summary {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.dayList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+
+.dayRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.dayRow:active {
+  transform: scale(0.98);
+}
+
+.dayLetter {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dayLetter_strength {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+.dayLetter_cardio {
+  background: var(--cardio-light);
+  color: var(--cardio-dark);
+}
+
+.dayLetter_rest {
+  background: var(--surface-warm);
+  color: var(--text-muted);
+}
+
+.dayInfo {
+  flex: 1;
+}
+
+.dayName {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dayFocus {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.chevron {
+  color: var(--text-muted);
+}
+
+/* Detail view */
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px 8px;
+}
+
+.backBtn {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.detailCard {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: 8px 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.detailTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.detailSub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.exerciseList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.exerciseRow {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-warm);
+}
+
+.exerciseRow:last-child {
+  border-bottom: none;
+}
+
+.exerciseTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.exName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.exSets {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.exMeta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.finisherNote {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--accent-light);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--accent-dark);
+}
+
+.cardioField {
+  margin-bottom: 12px;
+}
+
+.cardioFieldLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.cardioFieldValue {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
