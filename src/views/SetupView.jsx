@@ -1,20 +1,16 @@
 import { useState } from 'react'
-import { DEFAULT_WEEK_PATTERN, DAY_NAMES } from '../data/program'
+import { DEFAULT_WEEK_PATTERN, DAY_NAMES, CARDIO_TYPE_LABELS, PREFERRED_CARDIO_ICONS, PREFERRED_CARDIO_OPTIONS } from '../data/program'
 import styles from './SetupView.module.css'
 
 const TYPE_CYCLE = ['strength', 'cardio', 'rest']
 const STRENGTH_CYCLE = ['lower', 'upper', 'full']
 const CARDIO_CYCLE = ['zone2', 'intervals', 'longFun']
 
-const TYPE_ICON = { strength: '💪', cardio: '🏃🏻‍♀️', rest: '🧘🏻‍♀️' }
-
-const CARDIO_OPTIONS = [
-  { id: 'run', label: 'Run' },
-  { id: 'ride', label: 'Ride' },
-  { id: 'swim', label: 'Swim' },
-  { id: 'row', label: 'Row' },
-  { id: 'elliptical', label: 'Elliptical' },
-]
+function dayIcon(type, preferredCardio) {
+  if (type === 'strength') return '💪'
+  if (type === 'cardio') return PREFERRED_CARDIO_ICONS[preferredCardio] ?? '🏃🏻‍♀️'
+  return '🧘🏻‍♀️'
+}
 
 function cycleDay(day) {
   if (day.type === 'strength') {
@@ -105,7 +101,7 @@ export default function SetupView({ onComplete }) {
         <div className={styles.card}>
           <h2 className={styles.cardTitle}>Preferred cardio</h2>
           <div className={styles.pillRow}>
-            {CARDIO_OPTIONS.map(opt => (
+            {PREFERRED_CARDIO_OPTIONS.map(opt => (
               <button
                 key={opt.id}
                 className={`${styles.pill} ${preferredCardio === opt.id ? styles.pillActive : ''}`}
@@ -126,9 +122,9 @@ export default function SetupView({ onComplete }) {
               return (
                 <button key={d} className={styles.dayBtn} onClick={() => handleCycle(i)}>
                   <span className={styles.dayName}>{d}</span>
-                  <span className={styles.dayIcon}>{TYPE_ICON[day.type]}</span>
+                  <span className={styles.dayIcon}>{dayIcon(day.type, preferredCardio)}</span>
                   <span className={styles.dayTypeLabel}>
-                    {day.type === 'strength' ? day.strengthDay : day.type === 'cardio' ? day.cardioType : 'rest'}
+                    {day.type === 'strength' ? day.strengthDay : day.type === 'cardio' ? CARDIO_TYPE_LABELS[day.cardioType] : 'rest'}
                   </span>
                 </button>
               )

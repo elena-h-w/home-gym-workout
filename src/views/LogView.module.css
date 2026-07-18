@@ -62,6 +62,38 @@
   font-weight: 600;
 }
 
+.settingBlock {
+  padding: 10px 0 6px;
+}
+
+.settingBlockLabel {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.pillRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-warm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pillActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
 .empty {
   text-align: center;
   padding: 60px 20px;

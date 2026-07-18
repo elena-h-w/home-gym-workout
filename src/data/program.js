@@ -11,6 +11,28 @@ export function repRangeLabel(exercise) {
   return `${exercise.repMin}–${exercise.repMax}`
 }
 
+export const CARDIO_TYPE_LABELS = {
+  zone2: 'Zone 2',
+  intervals: 'Intervals',
+  longFun: 'Long',
+}
+
+export const PREFERRED_CARDIO_ICONS = {
+  run: '🏃🏻‍♀️',
+  ride: '🚴🏻‍♀️',
+  swim: '🏊🏻‍♀️',
+  row: '🚣🏻‍♀️',
+  elliptical: '🔄',
+}
+
+export const PREFERRED_CARDIO_OPTIONS = [
+  { id: 'run', label: 'Run' },
+  { id: 'ride', label: 'Ride' },
+  { id: 'swim', label: 'Swim' },
+  { id: 'row', label: 'Row' },
+  { id: 'elliptical', label: 'Elliptical' },
+]
+
 export const DEFAULT_WEEK_PATTERN = [
   { day: 'Mon', type: 'strength', strengthDay: 'lower' },
   { day: 'Tue', type: 'cardio', cardioType: 'zone2' },

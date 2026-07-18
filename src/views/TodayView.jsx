@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { DAY_NAMES, STRENGTH_DAYS, CARDIO_PROTOCOLS, REST_DAY_VIDEOS, repRangeLabel } from '../data/program'
+import { DAY_NAMES, STRENGTH_DAYS, CARDIO_PROTOCOLS, REST_DAY_VIDEOS, repRangeLabel, PREFERRED_CARDIO_ICONS } from '../data/program'
 import { VIDEOS } from '../data/videos'
 import StrengthWorkout from './StrengthWorkout'
 import CardioSession from './CardioSession'
 import styles from './TodayView.module.css'
 
-const TYPE_ICON = { strength: '💪', cardio: '🏃🏻‍♀️', rest: '🧘🏻‍♀️' }
+function dayIcon(type, preferredCardio) {
+  if (type === 'strength') return '💪'
+  if (type === 'cardio') return PREFERRED_CARDIO_ICONS[preferredCardio] ?? '🏃🏻‍♀️'
+  return '🧘🏻‍♀️'
+}
 
 function findVideo(id) {
   return id ? VIDEOS.find(v => v.id === id) ?? null : null
@@ -17,7 +21,7 @@ function focusIdFor(plan) {
   return 'rest'
 }
 
-function WeekStrip({ pattern, todayDow, selectedDow, onSelect }) {
+function WeekStrip({ pattern, todayDow, selectedDow, onSelect, preferredCardio }) {
   return (
     <div className={styles.weekStrip}>
       {DAY_NAMES.map((d, i) => (
@@ -27,7 +31,7 @@ function WeekStrip({ pattern, todayDow, selectedDow, onSelect }) {
           onClick={() => onSelect(i)}
         >
           <span className={styles.dayName}>{d}</span>
-          <span className={styles.dayType}>{TYPE_ICON[pattern[i].type]}</span>
+          <span className={styles.dayType}>{dayIcon(pattern[i].type, preferredCardio)}</span>
         </button>
       ))}
     </div>
@@ -100,7 +104,7 @@ export default function TodayView({ program }) {
         </h1>
       </div>
 
-      <WeekStrip pattern={settings.weekPattern} todayDow={todayDow} selectedDow={selectedDow} onSelect={setSelectedDow} />
+      <WeekStrip pattern={settings.weekPattern} todayDow={todayDow} selectedDow={selectedDow} onSelect={setSelectedDow} preferredCardio={settings.preferredCardio} />
 
       {!isSelectedToday && (
         <p className={styles.overrideNote}>

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { STRENGTH_DAYS, CARDIO_PROTOCOLS } from '../data/program'
+import { STRENGTH_DAYS, CARDIO_PROTOCOLS, PREFERRED_CARDIO_OPTIONS } from '../data/program'
 import Sparkline from '../components/Sparkline'
 import styles from './LogView.module.css'
 
@@ -108,9 +108,19 @@ function HistoryTab({ sessions, settings, updateSettings }) {
           <span className={styles.settingLabel}>Units</span>
           <span className={styles.settingValue}>{settings.units}</span>
         </div>
-        <div className={styles.settingRow}>
-          <span className={styles.settingLabel}>Preferred cardio</span>
-          <span className={styles.settingValue}>{settings.preferredCardio}</span>
+        <div className={styles.settingBlock}>
+          <div className={styles.settingBlockLabel}>Preferred cardio</div>
+          <div className={styles.pillRow}>
+            {PREFERRED_CARDIO_OPTIONS.map(opt => (
+              <button
+                key={opt.id}
+                className={`${styles.pill} ${settings.preferredCardio === opt.id ? styles.pillActive : ''}`}
+                onClick={() => updateSettings({ preferredCardio: opt.id })}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
         </div>
         <div className={styles.settingRow}>
           <span className={styles.settingLabel}>Sessions logged</span>
