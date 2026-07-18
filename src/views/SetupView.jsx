@@ -36,7 +36,7 @@ function cycleDay(day) {
 
 export default function SetupView({ onComplete }) {
   const [age, setAge] = useState('')
-  const [restTimerDefault, setRestTimerDefault] = useState(75)
+  const [restTimerDefault, setRestTimerDefault] = useState(60)
   const [units, setUnits] = useState('lb')
   const [preferredCardio, setPreferredCardio] = useState('run')
   const [weekPattern, setWeekPattern] = useState(DEFAULT_WEEK_PATTERN.map(d => ({ ...d })))
@@ -82,7 +82,7 @@ export default function SetupView({ onComplete }) {
           <h2 className={styles.cardTitle}>Rest timer default</h2>
           <p className={styles.cardDesc}>How long to rest between strength sets. You can override this any time.</p>
           <div className={styles.pillRow}>
-            {[60, 75, 90, 120].map(s => (
+            {[30, 60, 90, 120].map(s => (
               <button
                 key={s}
                 className={`${styles.pill} ${restTimerDefault === s ? styles.pillActive : ''}`}
