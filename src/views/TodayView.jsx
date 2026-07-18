@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { DAY_NAMES, STRENGTH_DAYS, CARDIO_PROTOCOLS, REST_DAY_VIDEOS, repRangeLabel, PREFERRED_CARDIO_ICONS } from '../data/program'
+import { DAY_NAMES, STRENGTH_DAYS, CARDIO_PROTOCOLS, REST_DAY_VIDEOS, repRangeLabel, PREFERRED_CARDIO_ICONS, cycleDayType } from '../data/program'
 import { VIDEOS } from '../data/videos'
 import StrengthWorkout from './StrengthWorkout'
 import CardioSession from './CardioSession'
@@ -21,13 +21,13 @@ function focusIdFor(plan) {
   return 'rest'
 }
 
-function WeekStrip({ pattern, todayDow, selectedDow, onSelect, preferredCardio }) {
+function WeekStrip({ pattern, todayDow, selectedDow, onSelect, preferredCardio, editMode }) {
   return (
     <div className={styles.weekStrip}>
       {DAY_NAMES.map((d, i) => (
         <button
           key={d}
-          className={`${styles.dayCell} ${i === selectedDow ? styles.dayCellSelected : ''} ${i === todayDow ? styles.dayCellToday : ''}`}
+          className={`${styles.dayCell} ${i === selectedDow ? styles.dayCellSelected : ''} ${i === todayDow ? styles.dayCellToday : ''} ${editMode ? styles.dayCellEditing : ''}`}
           onClick={() => onSelect(i)}
         >
           <span className={styles.dayName}>{d}</span>
@@ -42,14 +42,22 @@ export default function TodayView({ program }) {
   const [selectedDow, setSelectedDow] = useState(program.todayDow)
   const [mode, setMode] = useState(null) // null | 'strength' | 'cardio'
   const [justCompleted, setJustCompleted] = useState(false)
+  const [editMode, setEditMode] = useState(false)
 
-  const { settings, todayDow, todayStr, getTodaySessions, logSession } = program
+  const { settings, todayDow, todayStr, getTodaySessions, logSession, setWeekPattern } = program
   const plan = settings.weekPattern[selectedDow]
   const focusId = focusIdFor(plan)
   const isSelectedToday = selectedDow === todayDow
 
   const todaySessions = getTodaySessions()
   const isSessionLoggedToday = plan.type !== 'rest' && todaySessions.some(s => s.focusId === focusId)
+
+  function handleEditDay(i) {
+    const nextPattern = [...settings.weekPattern]
+    nextPattern[i] = cycleDayType(nextPattern[i])
+    setWeekPattern(nextPattern)
+    setSelectedDow(i)
+  }
 
   function handleStrengthComplete() {
     logSession({ dayType: 'strength', focusId: plan.strengthDay })
@@ -99,14 +107,32 @@ export default function TodayView({ program }) {
     <div className={styles.page + ' page-scroll'}>
       <div className={styles.header}>
         <p className={styles.dateLabel}>{dateLabel}</p>
-        <h1 className={styles.title}>
-          {isSelectedToday ? "Today" : `${selectedDayLabel}'s session`}
-        </h1>
+        <div className={styles.titleRow}>
+          <h1 className={styles.title}>
+            {isSelectedToday ? "Today" : `${selectedDayLabel}'s session`}
+          </h1>
+          <button className={styles.editToggle} onClick={() => setEditMode(e => !e)}>
+            {editMode ? 'Done' : 'Edit'}
+          </button>
+        </div>
       </div>
 
-      <WeekStrip pattern={settings.weekPattern} todayDow={todayDow} selectedDow={selectedDow} onSelect={setSelectedDow} preferredCardio={settings.preferredCardio} />
+      <WeekStrip
+        pattern={settings.weekPattern}
+        todayDow={todayDow}
+        selectedDow={selectedDow}
+        onSelect={editMode ? handleEditDay : setSelectedDow}
+        preferredCardio={settings.preferredCardio}
+        editMode={editMode}
+      />
 
-      {!isSelectedToday && (
+      {editMode && (
+        <p className={styles.overrideNote}>
+          Tap a day to cycle its focus: strength → cardio → rest.
+        </p>
+      )}
+
+      {!editMode && !isSelectedToday && (
         <p className={styles.overrideNote}>
           Viewing {selectedDayLabel}. <button onClick={() => setSelectedDow(todayDow)}>Back to today</button>
         </p>

@@ -1,33 +1,11 @@
 import { useState } from 'react'
-import { DEFAULT_WEEK_PATTERN, DAY_NAMES, CARDIO_TYPE_LABELS, PREFERRED_CARDIO_ICONS, PREFERRED_CARDIO_OPTIONS } from '../data/program'
+import { DEFAULT_WEEK_PATTERN, DAY_NAMES, CARDIO_TYPE_LABELS, PREFERRED_CARDIO_ICONS, PREFERRED_CARDIO_OPTIONS, cycleDayType } from '../data/program'
 import styles from './SetupView.module.css'
-
-const TYPE_CYCLE = ['strength', 'cardio', 'rest']
-const STRENGTH_CYCLE = ['lower', 'upper', 'full']
-const CARDIO_CYCLE = ['zone2', 'intervals', 'longFun']
 
 function dayIcon(type, preferredCardio) {
   if (type === 'strength') return '💪'
   if (type === 'cardio') return PREFERRED_CARDIO_ICONS[preferredCardio] ?? '🏃🏻‍♀️'
   return '🧘🏻‍♀️'
-}
-
-function cycleDay(day) {
-  if (day.type === 'strength') {
-    const idx = STRENGTH_CYCLE.indexOf(day.strengthDay)
-    if (idx < STRENGTH_CYCLE.length - 1) {
-      return { day: day.day, type: 'strength', strengthDay: STRENGTH_CYCLE[idx + 1] }
-    }
-    return { day: day.day, type: 'cardio', cardioType: 'zone2' }
-  }
-  if (day.type === 'cardio') {
-    const idx = CARDIO_CYCLE.indexOf(day.cardioType)
-    if (idx < CARDIO_CYCLE.length - 1) {
-      return { day: day.day, type: 'cardio', cardioType: CARDIO_CYCLE[idx + 1] }
-    }
-    return { day: day.day, type: 'rest' }
-  }
-  return { day: day.day, type: 'strength', strengthDay: 'lower' }
 }
 
 export default function SetupView({ onComplete }) {
@@ -40,7 +18,7 @@ export default function SetupView({ onComplete }) {
   function handleCycle(i) {
     setWeekPattern(prev => {
       const next = [...prev]
-      next[i] = cycleDay(next[i])
+      next[i] = cycleDayType(next[i])
       return next
     })
   }

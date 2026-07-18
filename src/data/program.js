@@ -11,6 +11,28 @@ export function repRangeLabel(exercise) {
   return `${exercise.repMin}–${exercise.repMax}`
 }
 
+const STRENGTH_CYCLE = ['lower', 'upper', 'full']
+const CARDIO_CYCLE = ['zone2', 'intervals', 'longFun']
+
+// Cycles a single weekPattern day through strength focus -> cardio type -> rest -> back to strength.
+export function cycleDayType(day) {
+  if (day.type === 'strength') {
+    const idx = STRENGTH_CYCLE.indexOf(day.strengthDay)
+    if (idx < STRENGTH_CYCLE.length - 1) {
+      return { day: day.day, type: 'strength', strengthDay: STRENGTH_CYCLE[idx + 1] }
+    }
+    return { day: day.day, type: 'cardio', cardioType: 'zone2' }
+  }
+  if (day.type === 'cardio') {
+    const idx = CARDIO_CYCLE.indexOf(day.cardioType)
+    if (idx < CARDIO_CYCLE.length - 1) {
+      return { day: day.day, type: 'cardio', cardioType: CARDIO_CYCLE[idx + 1], optional: day.optional }
+    }
+    return { day: day.day, type: 'rest' }
+  }
+  return { day: day.day, type: 'strength', strengthDay: 'lower' }
+}
+
 export const CARDIO_TYPE_LABELS = {
   zone2: 'Zone 2',
   intervals: 'Intervals',
@@ -323,12 +345,12 @@ export const CARDIO_PROTOCOLS = {
   },
   longFun: {
     id: 'longFun',
-    name: 'Long / Fun (Optional)',
+    name: 'Long / Fun',
     description: 'Keeps weekly volume up without added stress — good for adherence.',
-    howTo: 'A longer easy incline walk or elliptical session (40–45 min), or a dance-cardio video plus a short walk.',
+    howTo: 'A longer easy incline walk or elliptical session (60–90 min), or a dance-cardio video plus a short walk.',
     progression: 'Optional — skip if the week feels heavy.',
-    durationMin: 30,
-    durationMaxMin: 50,
+    durationMin: 60,
+    durationMaxMin: 90,
     funVideoId: '15-min-dance-cardio-workout',
   },
   returnToRun: {
