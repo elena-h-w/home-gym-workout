@@ -345,7 +345,7 @@ export const CARDIO_PROTOCOLS = {
   },
   longFun: {
     id: 'longFun',
-    name: 'Long / Fun',
+    name: 'Long',
     description: 'Keeps weekly volume up without added stress — good for adherence.',
     howTo: 'A longer easy incline walk or elliptical session (60–90 min), or a dance-cardio video plus a short walk.',
     progression: 'Optional — skip if the week feels heavy.',
