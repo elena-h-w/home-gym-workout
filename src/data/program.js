@@ -22,7 +22,7 @@ export const PREFERRED_CARDIO_ICONS = {
   ride: '🚴🏻‍♀️',
   swim: '🏊🏻‍♀️',
   row: '🚣🏻‍♀️',
-  elliptical: '🔄',
+  elliptical: '🛴',
 }
 
 export const PREFERRED_CARDIO_OPTIONS = [
