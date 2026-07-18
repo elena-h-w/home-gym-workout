@@ -53,16 +53,6 @@
   margin-bottom: 14px;
 }
 
-.textInput {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface-warm);
-  font-size: 16px;
-  color: var(--text-primary);
-}
-
 .pillRow {
   display: flex;
   gap: 8px;

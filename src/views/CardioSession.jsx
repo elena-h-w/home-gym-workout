@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import IntervalTimer from '../components/IntervalTimer'
 import DurationTimer from '../components/DurationTimer'
-import { hrRange } from '../data/program'
 import { VIDEOS } from '../data/videos'
 import styles from './CardioSession.module.css'
 
@@ -22,13 +21,11 @@ function VideoOffer({ icon, sub, video }) {
   )
 }
 
-export default function CardioSession({ cardioType, protocol, age, onComplete, onExit }) {
+export default function CardioSession({ cardioType, protocol, onComplete, onExit }) {
   const [phase, setPhase] = useState('info') // info | active | done
   const [durationSec, setDurationSec] = useState(null)
 
-  const hr = protocol.hrZonePctMin
-    ? hrRange(age, protocol.hrZonePctMin, protocol.hrZonePctMax)
-    : null
+  const hasHrTarget = Boolean(protocol.hrZonePctMin)
 
   function finish(seconds) {
     setDurationSec(seconds ?? null)
@@ -80,11 +77,12 @@ export default function CardioSession({ cardioType, protocol, age, onComplete, o
             Exit
           </button>
         </div>
-        {hr && (
+        {hasHrTarget && (
           <div className={styles.card}>
             <div className={styles.hrBanner}>
-              <span className={styles.hrValue}>{hr.min}–{hr.max} bpm</span>
-              <span className={styles.hrLabel}>Target heart rate</span>
+              <span className={styles.hrLabel}>
+                Target heart rate: {protocol.hrZonePctMin}–{protocol.hrZonePctMax}% of max HR
+              </span>
             </div>
           </div>
         )}
@@ -115,10 +113,11 @@ export default function CardioSession({ cardioType, protocol, age, onComplete, o
         <p className={styles.desc}>{protocol.description}</p>
         <div className={styles.howTo}>{protocol.howTo}</div>
 
-        {hr && (
+        {hasHrTarget && (
           <div className={styles.hrBanner}>
-            <span className={styles.hrValue}>{hr.min}–{hr.max} bpm</span>
-            <span className={styles.hrLabel}>Target heart rate ({protocol.hrZonePctMin}–{protocol.hrZonePctMax}% of max)</span>
+            <span className={styles.hrLabel}>
+              Target heart rate: {protocol.hrZonePctMin}–{protocol.hrZonePctMax}% of max HR
+            </span>
           </div>
         )}
 

@@ -92,7 +92,6 @@ export default function TodayView({ program }) {
       <CardioSession
         cardioType={plan.cardioType}
         protocol={protocol}
-        age={settings.age}
         onComplete={handleCardioComplete}
         onExit={() => setMode(null)}
       />

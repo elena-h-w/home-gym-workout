@@ -361,17 +361,3 @@ export const CARDIO_PROTOCOLS = {
     progression: "Incline walking has a ceiling — running fitness ultimately needs running. Add it gradually.",
   },
 }
-
-// ─── Heart Rate ──────────────────────────────────────────────────────────────
-
-export function maxHR(age) {
-  return Math.round(208 - 0.7 * age)
-}
-
-export function hrRange(age, pctMin, pctMax) {
-  const max = maxHR(age)
-  return {
-    min: Math.round(max * (pctMin / 100)),
-    max: Math.round(max * (pctMax / 100)),
-  }
-}

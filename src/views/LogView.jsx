@@ -90,17 +90,6 @@ function HistoryTab({ sessions, settings, updateSettings }) {
     <>
       <div className={styles.settingsCard}>
         <div className={styles.settingRow}>
-          <span className={styles.settingLabel}>Age</span>
-          <span className={styles.settingValue}>
-            <input
-              type="number"
-              value={settings.age ?? ''}
-              onChange={e => updateSettings({ age: Number(e.target.value) || null })}
-              style={{ width: 48, textAlign: 'right', border: 'none', background: 'none', fontWeight: 600, color: 'var(--text-primary)', fontFamily: 'var(--font-body)', fontSize: 14 }}
-            />
-          </span>
-        </div>
-        <div className={styles.settingRow}>
           <span className={styles.settingLabel}>Rest timer default</span>
           <span className={styles.settingValue}>{settings.restTimerDefault}s</span>
         </div>

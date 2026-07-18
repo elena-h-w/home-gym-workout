@@ -2,7 +2,6 @@ import { useStorage } from './useStorage'
 import { DEFAULT_WEEK_PATTERN } from '../data/program'
 
 const DEFAULT_SETTINGS = {
-  age: null,
   restTimerDefault: 60,
   preferredCardio: 'run',
   units: 'lb',

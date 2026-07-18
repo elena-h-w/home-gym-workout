@@ -9,7 +9,6 @@ function dayIcon(type, preferredCardio) {
 }
 
 export default function SetupView({ onComplete }) {
-  const [age, setAge] = useState('')
   const [restTimerDefault, setRestTimerDefault] = useState(60)
   const [units, setUnits] = useState('lb')
   const [preferredCardio, setPreferredCardio] = useState('run')
@@ -24,12 +23,7 @@ export default function SetupView({ onComplete }) {
   }
 
   function handleFinish() {
-    const ageNum = Number(age)
-    if (!ageNum || ageNum < 10 || ageNum > 100) {
-      alert('Enter your age so heart-rate zones can be calculated.')
-      return
-    }
-    onComplete({ age: ageNum, restTimerDefault: Number(restTimerDefault), units, preferredCardio, weekPattern })
+    onComplete({ restTimerDefault: Number(restTimerDefault), units, preferredCardio, weekPattern })
   }
 
   return (
@@ -38,19 +32,6 @@ export default function SetupView({ onComplete }) {
         <div className={styles.logoMark}>🏋🏻‍♀️</div>
         <h1 className={styles.title}>Lift &amp; Stride</h1>
         <p className={styles.sub}>Let's set up your program before we begin.</p>
-
-        <div className={styles.card}>
-          <h2 className={styles.cardTitle}>Your age</h2>
-          <p className={styles.cardDesc}>Used to calculate heart-rate training zones (max HR ≈ 208 − 0.7 × age).</p>
-          <input
-            type="number"
-            inputMode="numeric"
-            className={styles.textInput}
-            placeholder="e.g. 30"
-            value={age}
-            onChange={e => setAge(e.target.value)}
-          />
-        </div>
 
         <div className={styles.card}>
           <h2 className={styles.cardTitle}>Rest timer default</h2>
