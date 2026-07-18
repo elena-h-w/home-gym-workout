@@ -32,19 +32,21 @@ export default function RestTimer({ defaultSeconds = 75, onDone }) {
 
   return (
     <div className={styles.wrap}>
-      <svg className={styles.ring} viewBox="0 0 100 100" width="96" height="96">
-        <circle cx="50" cy="50" r="40" className={styles.track} />
-        <circle
-          cx="50" cy="50" r="40"
-          className={styles.fill}
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference - progress}
-          style={{ stroke: pct > 0.4 ? 'var(--accent)' : pct > 0.2 ? 'var(--warning)' : 'var(--danger)' }}
-        />
-      </svg>
-      <div className={styles.label}>
-        <span className={styles.time}>{seconds}</span>
-        <span className={styles.unit}>sec</span>
+      <div className={styles.ringWrap}>
+        <svg className={styles.ring} viewBox="0 0 100 100" width="96" height="96">
+          <circle cx="50" cy="50" r="40" className={styles.track} />
+          <circle
+            cx="50" cy="50" r="40"
+            className={styles.fill}
+            strokeDasharray={circumference}
+            strokeDashoffset={circumference - progress}
+            style={{ stroke: pct > 0.4 ? 'var(--accent)' : pct > 0.2 ? 'var(--warning)' : 'var(--danger)' }}
+          />
+        </svg>
+        <div className={styles.label}>
+          <span className={styles.time}>{seconds}</span>
+          <span className={styles.unit}>sec</span>
+        </div>
       </div>
       <div className={styles.actions}>
         <button className={styles.btn} onClick={() => setRunning(r => !r)}>

@@ -6,8 +6,13 @@
   padding: 20px 0;
 }
 
-.ring {
+.ringWrap {
   position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.ring {
   transform: rotate(-90deg);
 }
 
@@ -25,10 +30,13 @@
 }
 
 .label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -76px;
 }
 
 .time {

@@ -11,9 +11,25 @@ function buildPhases(structure) {
   return phases
 }
 
+// A fresh AudioContext created outside a direct user-gesture handler (e.g. from
+// a setInterval tick) starts "suspended" on some browsers and never produces
+// sound. Reuse one context and unlock it explicitly on mount, which fires as a
+// near-immediate result of the tap that starts the timer.
+let sharedAudioCtx = null
+
+function getAudioContext() {
+  if (!sharedAudioCtx) {
+    sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)()
+  }
+  if (sharedAudioCtx.state === 'suspended') {
+    sharedAudioCtx.resume()
+  }
+  return sharedAudioCtx
+}
+
 function beep(freq = 880, duration = 150) {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)()
+    const ctx = getAudioContext()
     const osc = ctx.createOscillator()
     const gain = ctx.createGain()
     osc.frequency.value = freq
@@ -22,7 +38,6 @@ function beep(freq = 880, duration = 150) {
     gain.gain.setValueAtTime(0.15, ctx.currentTime)
     osc.start()
     osc.stop(ctx.currentTime + duration / 1000)
-    osc.onended = () => ctx.close()
   } catch {
     // audio unavailable — ignore
   }
@@ -45,6 +60,14 @@ export default function IntervalTimer({ structure, onDone, onExit }) {
   const intervalRef = useRef(null)
 
   const phase = phases[phaseIdx]
+
+  useEffect(() => {
+    try {
+      getAudioContext()
+    } catch {
+      // audio unavailable — ignore
+    }
+  }, [])
 
   useEffect(() => {
     if (!running || finished) return
