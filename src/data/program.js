@@ -23,6 +23,7 @@ export const PREFERRED_CARDIO_ICONS = {
   swim: '🏊🏻‍♀️',
   row: '🚣🏻‍♀️',
   elliptical: '🛴',
+  mixed: '💦',
 }
 
 export const PREFERRED_CARDIO_OPTIONS = [
@@ -31,6 +32,7 @@ export const PREFERRED_CARDIO_OPTIONS = [
   { id: 'swim', label: 'Swim' },
   { id: 'row', label: 'Row' },
   { id: 'elliptical', label: 'Elliptical' },
+  { id: 'mixed', label: 'Mixed' },
 ]
 
 export const DEFAULT_WEEK_PATTERN = [
