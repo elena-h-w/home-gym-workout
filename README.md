@@ -12,7 +12,7 @@ Lift & Stride runs a 7-day home-gym rotation — 3 strength days, 2–3 cardio d
 
 **Strength program** (3×/week) — Lower Body, Upper Body, and Full Body / Glute sessions. Guided one-exercise-at-a-time workout mode with a built-in rest timer, last-session reference for every exercise, and a progressive-overload nudge when you're ready to add weight.
 
-**Cardio program** — Zone 2 steady-state, a 4×4 VO2 interval protocol with a phase-cued interval timer (haptics + audio cues), an optional long/fun cardio day, and a return-to-running progression.
+**Cardio program** — Zone 2 steady-state, a 4×4 VO2 interval protocol with a phase-cued interval timer (haptic cues), an optional long/fun cardio day, and a return-to-running progression.
 
 **Video library** — the full linked video library, grouped by category (Core, Upper Body, Lower Body / Booty, Dance, HIIT/Cardio, Yoga/Pilates, Stretch), with "best for" notes mapping videos to specific days in the plan.
 
@@ -22,7 +22,7 @@ Lift & Stride runs a 7-day home-gym rotation — 3 strength days, 2–3 cardio d
 
 - **Today view** — auto-selects today's session from the weekly rotation, with an easy override to view or run any other day
 - **Guided workout mode** — one exercise at a time: log weight + reps per set, rest timer, last-session reference, and a "ready to add weight?" nudge based on rep-range performance
-- **Interval timer** — 5-minute warm-up → 4×(4-minute hard / 3-minute easy) → 5-minute cooldown, with clear phase labels, haptic buzzes, and audio beeps on every transition
+- **Interval timer** — 5-minute warm-up → 4×(4-minute hard / 3-minute easy) → 5-minute cooldown, with clear phase labels and a haptic buzz on every transition
 - **Heart-rate zones** — Zone 2 targets 60–70% of max HR, intervals target 90–95%
 - **Program view** — full weekly rotation overview with drill-in detail for every strength and cardio day
 - **Progress log** — session history plus a per-exercise progression view (sparkline + weight/rep history) so you can watch the numbers climb

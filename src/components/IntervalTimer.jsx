@@ -11,38 +11,6 @@ function buildPhases(structure) {
   return phases
 }
 
-// A fresh AudioContext created outside a direct user-gesture handler (e.g. from
-// a setInterval tick) starts "suspended" on some browsers and never produces
-// sound. Reuse one context and unlock it explicitly on mount, which fires as a
-// near-immediate result of the tap that starts the timer.
-let sharedAudioCtx = null
-
-function getAudioContext() {
-  if (!sharedAudioCtx) {
-    sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)()
-  }
-  if (sharedAudioCtx.state === 'suspended') {
-    sharedAudioCtx.resume()
-  }
-  return sharedAudioCtx
-}
-
-function beep(freq = 880, duration = 150) {
-  try {
-    const ctx = getAudioContext()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.frequency.value = freq
-    osc.connect(gain)
-    gain.connect(ctx.destination)
-    gain.gain.setValueAtTime(0.15, ctx.currentTime)
-    osc.start()
-    osc.stop(ctx.currentTime + duration / 1000)
-  } catch {
-    // audio unavailable — ignore
-  }
-}
-
 function formatTime(sec) {
   const m = Math.floor(sec / 60)
   const s = sec % 60
@@ -62,21 +30,12 @@ export default function IntervalTimer({ structure, onDone, onExit }) {
   const phase = phases[phaseIdx]
 
   useEffect(() => {
-    try {
-      getAudioContext()
-    } catch {
-      // audio unavailable — ignore
-    }
-  }, [])
-
-  useEffect(() => {
     if (!running || finished) return
     intervalRef.current = setInterval(() => {
       setSecondsLeft(s => {
         if (s <= 1) {
           const isLastPhase = phaseIdx >= phases.length - 1
           navigator.vibrate?.(isLastPhase ? [200, 100, 200] : 200)
-          beep(isLastPhase ? 660 : 990)
           if (isLastPhase) {
             setFinished(true)
             setRunning(false)
